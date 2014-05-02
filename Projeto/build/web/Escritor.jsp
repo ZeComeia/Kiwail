@@ -15,15 +15,16 @@
     <body>
         <h1>Por favor, preencha os dados abaixo</h1>
         <br>
-        <form method="post" action="TratadorDeEnvio">
+        <form method="post" action="TratadorDeEnvio" enctype="multipart/form-data"> 
             
             <select name="cadastrado">
                 <%  
                     Cadastrado[] cadastrados = Cadastrados.getCadastrados_IDUsuario(1);
                     for(int i = 0; i < cadastrados.length; ++i)
                     {
+                        String ID = cadastrados[i].getID()+"";
                 %>
-                <option value=<%cadastrados[i].getID();%>> 
+                <option value=<%=ID%>> 
                     <!-- Aqui é preciso somar o URI do cadastrado com seu respectivo dominio !-->
                     <%
                         String dominio = Servidores.getServidor(cadastrados[i].getID_Servidor()).getDominio();
